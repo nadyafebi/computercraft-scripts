@@ -3,7 +3,7 @@
 
 local args = { ... }
 
-if #args ~= 2 then
+if #args ~= 1 then
     print("Invalid arguments")
     return
 end
@@ -33,9 +33,8 @@ function makeBridge(length)
 
         if i + 1 < length + 1 then
             turtle.forward()
+            i = i + 1
         end
-
-        i = i + 1
     end
 
     return i
