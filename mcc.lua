@@ -1,9 +1,10 @@
 local repoUrl = "https://raw.githubusercontent.com/nadyafebi/computercraft-scripts/main/"
+local programRoot = "rom/programs/mcc/"
 
 local function printUsage()
-    print("Get a script from my repo")
+    print("Get a script from Meeu's repo")
     print("Usage:")
-    print("mcc get <script>")
+    print("mcc install <script>")
 end
 
 local function getFromRepo(path)
@@ -16,12 +17,12 @@ local function getFromRepo(path)
     end
 end
 
-local function runGet(path)
+local function runInstall(path)
     if string.sub(path, -4) ~= ".lua" then
         path = path .. ".lua"
     end
 
-    local filePath = shell.resolve(path)
+    local filePath = shell.resolve(programRoot .. path)
     if fs.exists(filePath) then
         fs.delete(filePath)
     end
@@ -32,7 +33,7 @@ local function runGet(path)
         file.write(result)
         file.close()
     else
-        print("Could not find file")
+        print("Could not download file")
     end
 end
 
@@ -42,11 +43,11 @@ if #args < 1 then
     return
 end
 
-if args[1] == "get" then
+if args[1] == "install" or args[1] == "i" then
     if #args < 2 then
         printUsage()
         return
     end
 
-    runGet(args[2])
+    runInstall(args[2])
 end
