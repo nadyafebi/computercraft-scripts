@@ -1,5 +1,5 @@
 -- bridge <X>
--- Create a 1xX bridge
+-- Create a bridge with X length
 
 local args = { ... }
 
@@ -31,10 +31,12 @@ function makeBridge(length)
             return i, "Turtle obstructed"
         end
 
-        if i + 1 < length + 1 then
-            turtle.forward()
-            i = i + 1
+        if i == length then
+            break
         end
+        
+        turtle.forward()
+        i = i + 1
     end
 
     return i
