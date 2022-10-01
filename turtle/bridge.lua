@@ -1,14 +1,10 @@
--- bridge <X>
--- Create a bridge with X length
-
-local args = { ... }
-
-if #args ~= 1 then
-    print("Invalid arguments")
-    return
+local function printUsage()
+    print("Place down a bridge from the turtle position")
+    print("Usage:")
+    print("bridge <length>")
 end
 
-function makeBridge(length)
+local function makeBridge(length)
     local selectedSlot = 1
     turtle.select(selectedSlot)
 
@@ -40,6 +36,12 @@ function makeBridge(length)
     end
 
     return i
+end
+
+local args = { ... }
+if #args ~= 1 then
+    printUsage()
+    return
 end
 
 distance, endReason = makeBridge(tonumber(args[1]) or 0)
