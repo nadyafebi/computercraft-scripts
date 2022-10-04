@@ -15,6 +15,8 @@ local w, l = tonumber(args[1]) or nil, tonumber(args[2]) or nil
 local selectedSlot = 1
 turtle.select(selectedSlot)
 
+local turnRight = true
+
 for i = 1, w do
     for j = 1, l do
         if turtle.getItemCount() == 0 then
@@ -37,11 +39,22 @@ for i = 1, w do
     end
 
     if i < w then
-        turtle.turnRight()
-        if turtle.detect() then
-            error("Turtle obstructed")
+        if turnRight then
+            turtle.turnRight()
+            if turtle.detect() then
+                error("Turtle obstructed")
+            end
+            turtle.forward()
+            turtle.turnRight()
+        else
+            turtle.turnLeft()
+            if turtle.detect() then
+                error("Turtle obstructed")
+            end
+            turtle.forward()
+            turtle.turnLeft()
         end
-        turtle.forward()
-        turtle.turnRight()
+
+        turnRight = not turnRight
     end
 end
