@@ -6,26 +6,28 @@ end
 
 local function mineRoom(l, w, h)
     local turnRight = true
-    for i = 0, h do
-        for j = 0, w do
-            for k = 0, l do
+    for i = 1, h do
+        for j = 1, w do
+            for k = 1, l do
                 turtle.dig()
                 turtle.forward()
             end
 
-            if turnRight then
-                turtle.turnRight()
-                turtle.dig()
-                turtle.forward()
-                turtle.turnRight()
-            else
-                turtle.turnLeft()
-                turtle.dig()
-                turtle.forward()
-                turtle.turnLeft()
+            if j < w then
+                if turnRight then
+                    turtle.turnRight()
+                    turtle.dig()
+                    turtle.forward()
+                    turtle.turnRight()
+                else
+                    turtle.turnLeft()
+                    turtle.dig()
+                    turtle.forward()
+                    turtle.turnLeft()
+                end
+    
+                turnRight = not turnRight
             end
-
-            turnRight = not turnRight
         end
 
         if i < h then
