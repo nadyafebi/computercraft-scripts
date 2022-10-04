@@ -1,19 +1,19 @@
 local function printUsage()
     print("Do various mining jobs")
     print("Usage:")
-    print("mine room <l> <w> <h>")
+    print("mine room <w> <l> <h>")
 end
 
-local function mineRoom(l, w, h)
+local function mineRoom(w, l, h)
     local turnRight = true
     for i = 1, h do
-        for j = 1, w do
-            for k = 1, l do
+        for j = 1, l do
+            for k = 1, w do
                 turtle.dig()
                 turtle.forward()
             end
 
-            if j < w then
+            if j < l then
                 if turnRight then
                     turtle.turnRight()
                     turtle.dig()
