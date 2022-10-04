@@ -22,6 +22,7 @@ local function appendLuaToPath(path)
     if string.sub(path, -4) ~= ".lua" then
         path = path .. ".lua"
     end
+    return path
 end
 
 local function getProgramName(path)
