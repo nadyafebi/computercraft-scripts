@@ -41,6 +41,6 @@ local args = { ... }
 
 if args[1] == "room" and #args == 4 then
     mineRoom(tonumber(args[2]) or 0, tonumber(args[3]) or 0, tonumber(args[4]) or 0)
+else
+    printUsage()
 end
-
-printUsage()

@@ -44,6 +44,6 @@ local args = { ... }
 
 if args[1] == "install" or args[1] == "i" and #args == 2 then
     runInstall(args[2])
+else
+    printUsage()
 end
-
-printUsage()
