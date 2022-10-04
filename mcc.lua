@@ -41,16 +41,9 @@ local function runInstall(path)
 end
 
 local args = { ... }
-if #args < 1 then
-    printUsage()
-    return
-end
 
-if args[1] == "install" or args[1] == "i" then
-    if #args < 2 then
-        printUsage()
-        return
-    end
-
+if args[1] == "install" or args[1] == "i" and #args == 2 then
     runInstall(args[2])
 end
+
+printUsage()
