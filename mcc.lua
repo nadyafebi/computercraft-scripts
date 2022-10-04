@@ -64,12 +64,30 @@ local function runUninstall(path)
     shell.clearAlias(programName)
 end
 
+local function runUpdate()
+    path = "mcc.lua"
+    if fs.exists(path) then
+        fs.delete(path)
+    end
+
+    local result = getFromRepo(path)
+    if result then
+        local file = fs.open(path, "w")
+        file.write(result)
+        file.close()
+    else
+        error("Could not download file")
+    end
+end
+
 local args = { ... }
 
 if args[1] == "install" or args[1] == "i" and #args == 2 then
     runInstall(args[2])
 elseif args[1] == "uninstall" and #args == 2 then
     runUninstall(args[2])
+elseif args[1] == "update" or args[1] == "u" then
+    runUpdate()
 else
     printUsage()
 end
