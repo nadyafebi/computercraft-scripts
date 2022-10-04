@@ -1,5 +1,5 @@
 local repoUrl = "https://raw.githubusercontent.com/nadyafebi/computercraft-scripts/main/"
-local programRoot = "rom/programs/mcc/"
+local programRoot = "mcc/"
 
 local function printUsage()
     print("Get a script from Meeu's repo")
@@ -35,6 +35,9 @@ local function runInstall(path)
     else
         print("Could not download file")
     end
+
+    local programName = path:match(".*\/(.*)\.lua$")
+    shell.setAlias(programName, filePath)
 end
 
 local args = { ... }
