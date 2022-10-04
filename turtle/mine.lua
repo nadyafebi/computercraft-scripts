@@ -10,7 +10,10 @@ local function mineRoom(w, l, h)
         for j = 1, l do
             for k = 1, w do
                 turtle.dig()
-                turtle.forward()
+
+                if k < w then
+                    turtle.forward()
+                end
             end
 
             if j < l then
